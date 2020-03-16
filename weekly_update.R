@@ -1,7 +1,7 @@
 library(jsonlite)
 library(dplyr)
 library(lubridate)
-source("db_functions.R")
+source("db_functions.R", local = TRUE)
 
 men_this_weeks_ranks <- read_json("https://www.myutr.com/api/v1/player/top?gender=M&count=1000", 
                                   simplifyVector = TRUE)
