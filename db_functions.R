@@ -19,6 +19,21 @@ Get_DB_Conn <- function() {
   
 }
 
+Is_New_Player <- function(id) {
+  conn <- Get_DB_Conn()
+  if (is.null(conn) == FALSE) {
+    ret <- dbGetQuery(conn, paste0("SELECT COUNT(*) AS `pls` FROM utr.player WHERE idutr = ", id, ";"))
+    dbDisconnect(conn)
+    if (ret[1,1] > 0) {
+      return(FALSE)
+    }else {
+      return(TRUE)
+    }
+  }else {
+    return(NULL)
+  }
+}
+
 Insert_New_Player <-
   function(idutr,
            firstName,
@@ -55,10 +70,9 @@ Insert_New_Player <-
   }
 
 Insert_New_Rating <- function(con, rating, rank, date, player_id) {
-  conn <- con
-  if (is.null(conn) == FALSE) {
+  if (is.null(con) == FALSE) {
     ret <- dbGetQuery(
-      conn,
+      con,
       paste0(
         "CALL utr.insert_new_rating(",
         safeSQLVar(rating),
