@@ -69,12 +69,76 @@ Insert_New_Player <-
     }
   }
 
+Insert_New_College_Player <-
+  function(idutr,
+           firstName,
+           lastName,
+           displayName,
+           gender,
+           nationality,
+           college_name,
+           college_start) {
+    conn <- Get_DB_Conn()
+    if (is.null(conn) == FALSE) {
+      ret <- dbGetQuery(
+        conn,
+        paste0(
+          "CALL utr.insert_new_player_with_college(",
+          safeSQLVar(idutr),
+          ",",
+          safeSQLVar(firstName),
+          ",",
+          safeSQLVar(lastName),
+          ",",
+          safeSQLVar(displayName),
+          ",",
+          safeSQLVar(gender),
+          ",",
+          safeSQLVar(nationality),
+          ",",
+          safeSQLVar(college_name),
+          ",",
+          safeSQLVar(college_start),
+          ", @new_id);"
+        )
+      )
+      
+      dbDisconnect(conn)
+      return(ret)
+    } else {
+      return(NULL)
+    }
+  }
+
 Insert_New_Rating <- function(con, rating, rank, date, player_id) {
   if (is.null(con) == FALSE) {
     ret <- dbGetQuery(
       con,
       paste0(
         "CALL utr.insert_new_rating(",
+        safeSQLVar(rating),
+        ",",
+        safeSQLVar(rank),
+        ",",
+        safeSQLVar(date),
+        ",",
+        safeSQLVar(player_id),
+        ");"
+      )
+    )
+    
+    return(ret)
+  } else {
+    return(NULL)
+  }
+}
+
+Insert_New_College_Rating <- function(con, rating, rank, date, player_id) {
+  if (is.null(con) == FALSE) {
+    ret <- dbGetQuery(
+      con,
+      paste0(
+        "CALL utr.insert_new_rating_with_college_rank(",
         safeSQLVar(rating),
         ",",
         safeSQLVar(rank),
