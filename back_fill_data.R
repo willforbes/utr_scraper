@@ -2,7 +2,42 @@ library(jsonlite)
 library(dplyr)
 library(purrr)
 library(tidyr)
+library(httr)
 source("db_functions.R")
+
+get_player_history <- function(ids) {
+  for (i in 1:length(ids)) {
+    if (Is_New_Player(ids[i]) == TRUE) {
+      print(ids[i])
+      
+    } else {
+      print(i)
+      this_player_history <-
+        fromJSON(content(GET(
+          paste0("https://agw-prod.myutr.com/v1/player/",
+                 ids[i],
+                 "/profile"),
+          add_headers("cookie" = Get_Cookie())
+        ), as = "text"))$extendedRatingProfile$history %>% mutate(date = as.Date(date))
+      con <- Get_DB_Conn()
+      for (j in 1:nrow(this_player_history)) {
+        Insert_New_College_Rating(
+          con,
+          this_player_history[j, ]$rating,
+          NULL,
+          this_player_history[j, ]$date,
+          ids[i]
+        )
+      }
+      dbDisconnect(con)
+    }
+      
+    
+    
+  }
+}
+
+
 
 download.file("https://www.myutr.com/api/v1/player/top?gender=M&count=1000", paste0(Sys.Date(), "_m.json"))
 download.file("https://www.myutr.com/api/v1/player/top?gender=F&count=1000", paste0(Sys.Date(), "_f.json"))
