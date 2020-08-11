@@ -21,7 +21,8 @@ Get_DB_Conn <- function(dbName = "") {
 }
 
 Get_Cookie <- function() {
-  return("_ga=GA1.2.1860488477.1583235927; _fbp=fb.1.1583235927294.188684992; zarget_visitor_info=%7B%7D; _fingerprint=0d31c5f355c04df8b1d1beb7aac308da; ut_user_info=Email%3Dchris.white%40lta.org.uk%26MemberId%3D110800%26SubscriptionType%3DPremium%20Plus; ajs_anonymous_id=%22cc192f32-e74d-4c90-a131-e1bea47a925f%22; jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNZW1iZXJJZCI6IjExMDgwMCIsImVtYWlsIjoiY2hyaXMud2hpdGVAbHRhLm9yZy51ayIsIlZlcnNpb24iOiIxIiwiRGV2aWNlTG9naW5JZCI6IjQwNjUxMDkiLCJuYmYiOjE1OTQyMDIyMjEsImV4cCI6MTU5Njc5NDIyMSwiaWF0IjoxNTk0MjAyMjIxfQ.FXKm-MaelDJu82oa8UismmAmoMfoxaUfTfBv3Y3fWog; ajs_user_id=110800")
+  #return("_ga=GA1.2.1860488477.1583235927; _fbp=fb.1.1583235927294.188684992; zarget_visitor_info=%7B%7D; _fingerprint=0d31c5f355c04df8b1d1beb7aac308da; ut_user_info=Email%3Dchris.white%40lta.org.uk%26MemberId%3D110800%26SubscriptionType%3DPremium%20Plus; ajs_anonymous_id=%22cc192f32-e74d-4c90-a131-e1bea47a925f%22; jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNZW1iZXJJZCI6IjExMDgwMCIsImVtYWlsIjoiY2hyaXMud2hpdGVAbHRhLm9yZy51ayIsIlZlcnNpb24iOiIxIiwiRGV2aWNlTG9naW5JZCI6IjQwNjUxMDkiLCJuYmYiOjE1OTQyMDIyMjEsImV4cCI6MTU5Njc5NDIyMSwiaWF0IjoxNTk0MjAyMjIxfQ.FXKm-MaelDJu82oa8UismmAmoMfoxaUfTfBv3Y3fWog; ajs_user_id=110800")
+  return("_ga=GA1.2.1860488477.1583235927; _fbp=fb.1.1583235927294.188684992; zarget_visitor_info=%7B%7D; _fingerprint=9fc5211638098a75bba25203500a0f83; jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNZW1iZXJJZCI6IjExMDgwMCIsImVtYWlsIjoiY2hyaXMud2hpdGVAbHRhLm9yZy51ayIsIlZlcnNpb24iOiIxIiwiRGV2aWNlTG9naW5JZCI6IjQzMDc2NjMiLCJuYmYiOjE1OTcxMzIzMjQsImV4cCI6MTU5OTcyNDMyNCwiaWF0IjoxNTk3MTMyMzI0fQ.AuCoM1t6bqOOnkASbYOOQWWZGxYRdVLbQY4YLCaX2Ac; ut_user_info=Email%3Dchris.white%40lta.org.uk%26MemberId%3D110800%26SubscriptionType%3DPremium%20Plus; ajs_user_id=110800; ajs_anonymous_id=%229ff8c200-4069-4583-bbb3-e19e234e7570%22")
 }
 
 Is_New_Player <- function(id) {
